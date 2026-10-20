@@ -21,12 +21,13 @@ button[aria-pressed=true]{background:#45989c;color:#fff}
 ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0 22px}
 li{display:grid;grid-template-columns:12px 1fr auto;gap:8px;padding:5px 2px;border-bottom:1px solid var(--line)}
 li i{width:12px;height:12px;border-radius:2px;align-self:center}li.on{background:#f4f4f4}li b{font-weight:600;font-variant-numeric:tabular-nums}
+#hint{margin:6px 0 10px;padding:8px 10px;background:#f4f4f4;border-left:3px solid #45989c;font-size:14px;color:#333}
 footer{margin-top:10px;color:#666;font-size:12.5px}
 </style></head><body>
 <div id="hd"><h1>Statutární město Brno</h1><p class="sub">Rozpočet v letech 2010–2026 · Kam peníze jdou</p></div>
 <div class="ctl" id="ctl"><button id="prev" aria-label="Předchozí rok">‹</button><select id="sel" aria-label="Rok"></select><button id="next" aria-label="Další rok">›</button><button id="play" aria-label="Přehrát roky" aria-pressed="false">▶</button></div>
 <div class="note"><svg id="svg" viewBox="0 0 1000 440" role="img" aria-label="Skutečné výdaje Brna na tisícikoruně"></svg></div>
-<div id="info">&nbsp;</div><ul id="list"></ul>
+<div id="info">&nbsp;</div><p id="hint">Jak číst: šířka pruhu je podíl oblasti na každých 1000 Kč výdajů. Spusťte přehrávání (▶) a sledujte, jak se pruhy mění: doprava a sport rostou, finanční operace se zmenšují. Skokové změny kolem let 2012 a 2015 způsobila změna vykazování, ne skutečná změna výdajů.</p><ul id="list"></ul>
 <footer id="foot"></footer>
 <script>
 fetch('data.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(main).catch(()=>{const f=document.getElementById('foot');if(f)f.textContent='Data se nepodařilo načíst (data.json).'});
